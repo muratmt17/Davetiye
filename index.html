@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Azra & Şükrü - Düğün Davetiyesi</title>
+  
+  <!-- Open Graph / Meta -->
+  <meta name="description" content="Azra ve Şükrü Düğün Töreni Davetiyesi">
+  <meta property="og:title" content="Azra & Şükrü Düğün Davetiyesi">
+  <meta property="og:description" content="Söz ve Nişan Törenimize Davetlisiniz. - 10 Ekim 2026 Cumartesi, 19:00">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       ÖZELLEŞTİRİLEBİLİR TEMA & CSS DEĞİŞKENLERİ
+       ========================================================================== */
+    :root {
+      --primary: #C5A059;
+      --primary-light: #FDFBF7;
+      --accent: #2D2D2D;
+      --bg-dark: #0c0d10;
+      --bg-card: linear-gradient(145deg, #1a1916, #12110f);
+      --door-bg: linear-gradient(135deg, #24221d, #141310);
+      --text-main: #FDFBF7;
+      --text-muted: #b3a99b;
+      --gold-gradient: linear-gradient(135deg, #C5A059 0%, #FDFBF7 50%, #A5823E 100%);
+      --btn-primary: linear-gradient(135deg, #C5A059 0%, #A5823E 100%);
+      --btn-secondary: linear-gradient(135deg, #262420 0%, #161513 100%);
+      --font-display: 'Playfair Display', serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-cinzel: 'Cinzel', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: var(--bg-dark);
+      background-image: radial-gradient(ellipse at top, #1e1d1a 0%, #0d0d0c 100%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Arka Plan Işık Efekti */
+    .ambient-glow {
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ==========================================================================
+       1. INTERAKTİF 3D KAPI / AÇILIŞ SENARYOSU
+       ========================================================================== */
+    .door-wrapper {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1800px;
+      background: rgba(10, 10, 13, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.9s;
+      cursor: pointer;
+    }
+
+    .door-wrapper.opened {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* --------------------------------------------------------------------------
+       A) HOBBIT / MASALSI SARI AHŞAP YUVARLAK KAPI STİLİ
+       -------------------------------------------------------------------------- */
+    .hobbit-door-stage {
+      position: relative;
+      width: min(94vw, 480px);
+      aspect-ratio: 1 / 1;
+      max-height: 82vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1600px;
+      transform-style: preserve-3d;
+      user-select: none;
+    }
+
+    /* Ahşap Zemin Eşiği */
+    .hobbit-door-sill {
+      position: absolute;
+      bottom: -16px;
+      width: 76%;
+      height: 24px;
+      background: #4a3525;
+      border-radius: 0 0 16px 16px;
+      border-top: 2px solid #826042;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.85);
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hobbit-door-sill::after {
+      content: '';
+      width: 90%;
+      height: 4px;
+      background: #2e1f14;
+      border-radius: 4px;
+      opacity: 0.6;
+    }
+
+    /* Dış Dairesel Ahşap Kasa */
+    .hobbit-wood-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      padding: 16px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.9), 0 0 60px rgba(212,175,55,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #5c4028;
+      border: 4px solid #855f3e;
+      outline: 2px solid #3b2718;
+      transform-style: preserve-3d;
+    }
+
+    .hobbit-wood-frame::before {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      border: 4px solid #3d2a1b;
+      background: radial-gradient(circle, transparent 78%, #785233 82%, #3a2517 100%);
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    /* Kapı Arka Işığı (İç Mekan) */
+    .hobbit-interior-glow {
+      position: absolute;
+      inset: 20px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #ffeaa7 0%, rgba(225, 112, 85, 0.3) 60%, #121110 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+    }
+
+    .hobbit-interior-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      background: linear-gradient(to bottom, rgba(36, 28, 20, 0.8), rgba(20, 16, 12, 0.95));
+    }
+
+    .hobbit-interior-tag {
+      font-family: var(--font-cinzel);
+      font-size: 11px;
+      color: #f9ca24;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: sealPulse 2s infinite ease-in-out;
+    }
+
+    .hobbit-interior-names {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 4px;
+    }
+
+    /* 3D Açılan Sarı Ahşap Kapı Kanadı */
+    .hobbit-door-leaf {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #fcd036 0%, #f1b81a 50%, #d89e0b 100%);
+      border: 1px solid #a17a1b;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      transition: transform 1.1s cubic-bezier(0.35, 0, 0.15, 1);
+    }
+
+    .door-wrapper.door-opening .hobbit-door-leaf {
+      transform: rotateY(-112deg);
+    }
+
+    /* Ahşap Dikey Tahta Çizgileri */
+    .hobbit-planks {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 24px;
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .hobbit-plank-line {
+      width: 1px;
+      height: 100%;
+      background: rgba(140, 103, 8, 0.6);
+      box-shadow: 1px 0 1px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Sol Dekoratif Dövme Demir Menteşe */
+    .hobbit-hinge-wrapper {
+      position: absolute;
+      left: 8px;
+      top: 52%;
+      transform: translateY(-50%);
+      z-index: 20;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.7));
+    }
+
+    .hobbit-hinge-svg {
+      width: 120px;
+      height: auto;
+      display: block;
+    }
+
+    /* Yuvarlak 4 Bölmeli Işıklı Pencere */
+    .hobbit-window-box {
+      position: absolute;
+      top: 28%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 4px solid #855f3e;
+      background: #221811;
+      box-shadow: inset 0 4px 12px rgba(0,0,0,0.8), 0 4px 12px rgba(0,0,0,0.5);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hobbit-window-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, #fff4cc 0%, rgba(249, 202, 36, 0.6) 50%, rgba(211, 84, 0, 0.4) 100%);
+      opacity: 0.9;
+      animation: sealPulse 3s infinite ease-in-out;
+    }
+
+    .hobbit-window-muntin-h {
+      position: absolute;
+      width: 100%;
+      height: 10px;
+      background: #855f3e;
+      z-index: 10;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .hobbit-window-muntin-v {
+      position: absolute;
+      height: 100%;
+      width: 10px;
+      background: #855f3e;
+      z-index: 10;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .hobbit-window-shine {
+      position: absolute;
+      inset: -10px;
+      background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
+      pointer-events: none;
+      z-index: 12;
+    }
+
+    /* Sağ Bronz Kapı Kolu & Anahtar Deliği */
+    .hobbit-knob-box {
+      position: absolute;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+    }
+
+    .hobbit-knob-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #555048, #24211e 60%, #0d0c0b 100%);
+      border: 2px solid #1a1816;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.9), inset 0 2px 4px rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hobbit-knob-core {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #161513, #736d64);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+    }
+
+    .hobbit-keyhole {
+      width: 14px;
+      height: 18px;
+      background: #141210;
+      border-radius: 7px 7px 2px 2px;
+      border: 1px solid #3b3631;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 2px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.9);
+    }
+
+    .hobbit-keyhole-top {
+      width: 6px;
+      height: 6px;
+      background: #000;
+      border-radius: 50%;
+    }
+
+    .hobbit-keyhole-bot {
+      width: 3px;
+      height: 7px;
+      background: #000;
+      margin-top: -1px;
+    }
+
+    /* Kapı Üzeri Monogram Mühür & Tıklama Rozeti */
+    .hobbit-center-seal {
+      position: absolute;
+      top: 68%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.6s ease, opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .door-wrapper.door-opening .hobbit-center-seal {
+      transform: translate(-50%, -50%) scale(0.7);
+      opacity: 0;
+    }
+
+    /* --------------------------------------------------------------------------
+       B) ROYAL GATE (ÇİFT KANATLI KLASİK KAPI) STİLİ
+       -------------------------------------------------------------------------- */
+    .door-frame-royal {
+      position: relative;
+      width: min(92vw, 440px);
+      height: min(88vh, 720px);
+      display: flex;
+      border-radius: 24px 24px 8px 8px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.2);
+      border: 2px solid rgba(212, 175, 55, 0.4);
+      transform-style: preserve-3d;
+      overflow: hidden;
+    }
+
+    .door-leaf-royal {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: var(--door-bg);
+      background-size: cover;
+      transform-style: preserve-3d;
+      transition: transform 1.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .door-leaf-royal.left {
+      left: 0;
+      transform-origin: left center;
+      border-right: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .door-leaf-royal.right {
+      right: 0;
+      transform-origin: right center;
+      border-left: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .door-panel-royal {
+      position: absolute;
+      inset: 20px 14px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 12px 12px 4px 4px;
+      pointer-events: none;
+    }
+
+    .door-panel-royal-inner {
+      position: absolute;
+      inset: 8px;
+      border: 1px dashed rgba(212, 175, 55, 0.2);
+      border-radius: 8px;
+    }
+
+    .door-wrapper.door-opening .door-leaf-royal.left {
+      transform: rotateY(-115deg);
+    }
+
+    .door-wrapper.door-opening .door-leaf-royal.right {
+      transform: rotateY(115deg);
+    }
+
+    /* Ortak Mühür & Açılış Butonu Rozetleri */
+    .wax-seal {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #f6e27a, #cb9b2b 45%, #6a4a06 90%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.6), inset 0 -3px 6px rgba(0,0,0,0.6);
+      border: 2px solid #dfb76c;
+      animation: sealPulse 2.4s infinite ease-in-out;
+      margin-bottom: 12px;
+    }
+
+    .wax-seal-monogram {
+      font-family: var(--font-cinzel);
+      font-size: 18px;
+      font-weight: 700;
+      color: #3b2803;
+      text-shadow: 0 1px 1px rgba(255,255,255,0.4);
+      letter-spacing: 1px;
+    }
+
+    .door-cta-badge {
+      background: rgba(20, 18, 14, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      padding: 8px 18px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+
+    .door-cta-text {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #fdfbf7;
+      text-transform: uppercase;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #f9ca24;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #f9ca24;
+      animation: dotBlink 1.4s infinite;
+    }
+
+    @keyframes sealPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.7)); }
+    }
+
+    @keyframes dotBlink {
+      0%, 100% { opacity: 0.4; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* ==========================================================================
+       2. ANA DAVETİYE KARTI
+       ========================================================================== */
+    .invitation-container {
+      position: relative;
+      z-index: 10;
+      width: min(94vw, 440px);
+      margin: 32px auto;
+      opacity: 0;
+      transform: scale(0.95) translateY(20px);
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s, transform 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+      pointer-events: none;
+    }
+
+    .invitation-container.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    .card-frame {
+      position: relative;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 28px;
+      padding: 36px 24px 30px 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 50px rgba(212, 175, 55, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Altın Köşe Motifleri */
+    .corner-decor {
+      position: absolute;
+      width: 42px;
+      height: 42px;
+      pointer-events: none;
+      opacity: 0.85;
+    }
+    .corner-decor.top-left { top: 12px; left: 12px; }
+    .corner-decor.top-right { top: 12px; right: 12px; transform: scaleX(-1); }
+    .corner-decor.bottom-left { bottom: 12px; left: 12px; transform: scaleY(-1); }
+    .corner-decor.bottom-right { bottom: 12px; right: 12px; transform: scale(-1); }
+
+    .tagline {
+      font-family: var(--font-cinzel);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--primary-light);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .names-section {
+      margin-bottom: 20px;
+    }
+
+    .couple-name {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .ampersand {
+      font-family: var(--font-script);
+      font-size: 36px;
+      color: var(--primary-light);
+      display: block;
+      margin: -4px 0;
+      opacity: 0.95;
+    }
+
+    .photo-wrapper {
+      position: relative;
+      width: 190px;
+      height: 190px;
+      margin: 8px 0 22px 0;
+      border-radius: 50%;
+      padding: 5px;
+      background: var(--gold-gradient);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      border: 2px solid #14161d;
+    }
+
+    .invitation-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-main);
+      max-width: 320px;
+      margin-bottom: 24px;
+      opacity: 0.92;
+    }
+
+    .gold-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      margin-bottom: 20px;
+    }
+
+    .event-info-box {
+      margin-bottom: 20px;
+    }
+
+    .event-date-title {
+      font-family: var(--font-cinzel);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--primary-light);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .event-time-badge {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 14px;
+      border-radius: 20px;
+      display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .venue-info {
+      margin-bottom: 24px;
+      max-width: 320px;
+    }
+
+    .venue-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .venue-address {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Geri Sayım */
+    .countdown-section {
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .countdown-item {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 12px;
+      padding: 8px 4px;
+    }
+
+    .countdown-val {
+      font-family: var(--font-cinzel);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-light);
+      display: block;
+    }
+
+    .countdown-lbl {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      display: block;
+    }
+
+    /* ==========================================================================
+       3. EVRENSEL AKSİYON BUTONLARI
+       ========================================================================== */
+    .actions-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .btn-action {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 14px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+      -webkit-appearance: none;
+    }
+
+    .btn-action:active {
+      transform: scale(0.98);
+    }
+
+    .btn-calendar {
+      background: var(--btn-primary);
+      color: #1a1408;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-calendar:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 10px 28px rgba(212, 175, 55, 0.45);
+    }
+
+    .btn-navigation {
+      background: var(--btn-secondary);
+      color: var(--text-main);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-navigation:hover {
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+    }
+
+    .btn-icon {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Kapıyı Yeniden Kapat Butonu */
+    .replay-bar {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-replay {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: color 0.2s;
+    }
+
+    .btn-replay:hover {
+      color: var(--primary-light);
+    }
+
+    /* Kuş Animasyonu CSS */
+    .birds-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 150px;
+      margin-left: -150px;
+      margin-top: -75px;
+      z-index: 200;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.1);
+    }
+
+    .birds-container.fly-in {
+      animation: birdsFlyTowards 7s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    }
+
+    @keyframes birdsFlyTowards {
+      0% { opacity: 0; transform: scale(0.05) translateY(40px); }
+      14% { opacity: 0; transform: scale(0.05) translateY(40px); }
+      35% { opacity: 1; transform: scale(0.6) translateY(10px); }
+      80% { opacity: 1; transform: scale(1.5) translateY(0px); }
+      100% { opacity: 0; transform: scale(6) translateY(-40px); }
+    }
+
+    .wing-anim {
+      transform-origin: 45px 40px;
+      animation: wingFlap 0.08s infinite alternate ease-in-out;
+    }
+
+    @keyframes wingFlap {
+      0% { transform: rotate(-10deg) scaleY(1); }
+      100% { transform: rotate(50deg) scaleY(0.2); }
+    }
+
+    /* Parçacık Efekti */
+    .particle-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Yüzen Müzik Çalar Widget'ı */
+    .floating-music-widget {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 90;
+      background: rgba(18, 20, 26, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border-radius: 40px;
+      padding: 8px 14px 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    .music-disc-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #111;
+      border: 1px solid #d4af37;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .music-wave {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 14px;
+    }
+
+    .music-wave span {
+      width: 3px;
+      height: 4px;
+      background: #d4af37;
+      border-radius: 2px;
+      transition: height 0.2s;
+    }
+
+    .music-wave.playing span:nth-child(1) { animation: soundBar 0.8s infinite ease-in-out; }
+    .music-wave.playing span:nth-child(2) { animation: soundBar 1.1s infinite ease-in-out 0.2s; }
+    .music-wave.playing span:nth-child(3) { animation: soundBar 0.9s infinite ease-in-out 0.4s; }
+
+    @keyframes soundBar {
+      0%, 100% { height: 4px; }
+      50% { height: 14px; }
+    }
+
+    .music-info-text {
+      display: flex;
+      flex-direction: column;
+      max-width: 140px;
+    }
+
+    .music-label-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .music-label-sub {
+      font-size: 9px;
+      color: #c5baa5;
+    }
+
+    .music-ctrl-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #d4af37;
+      color: #111;
+      border: none;
+      font-size: 10px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .music-ctrl-btn:hover {
+      background: #f9ca24;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .card-frame {
+        padding: 28px 18px 24px 18px;
+        border-radius: 22px;
+      }
+      .photo-wrapper {
+        width: 160px;
+        height: 160px;
+      }
+      .couple-name {
+        font-size: 30px;
+      }
+      .floating-music-widget {
+        bottom: 16px;
+        left: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ortam Işık Efekti -->
+  <div class="ambient-glow"></div>
+  
+  <!-- Düşen Parçacıklar Canvası -->
+  <canvas id="particleCanvas" class="particle-canvas"></canvas>
+
+  <!-- Yüzük Taşıyan Kuşlar Animasyonu -->
+  <div id="birdsWrapper" class="birds-container">
+    <svg width="300" height="150" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+      <!-- Left Hummingbird -->
+      <g transform="translate(20, 30)">
+        <path d="M25,70 Q10,90 0,100 Q20,80 30,75 Z" fill="#b38f24"/>
+        <path d="M25,70 Q45,35 65,45 Q55,80 25,70 Z" fill="#d4af37"/>
+        <path class="wing-anim" d="M45,40 Q55,-10 20,-20 Q40,15 45,40 Z" fill="#ebd17e"/>
+        <circle cx="65" cy="45" r="11" fill="#d4af37"/>
+        <path d="M75,43 L120,55 L75,47 Z" fill="#8c7317"/>
+      </g>
+      
+      <!-- Rings -->
+      <circle cx="140" cy="85" r="15" stroke="#e8c966" stroke-width="3" fill="none"/>
+      <circle cx="160" cy="85" r="15" stroke="#d4af37" stroke-width="3" fill="none"/>
+      <circle cx="150" cy="74" r="3" fill="#fff" />
+      
+      <!-- Right Hummingbird -->
+      <g transform="translate(280, 30) scale(-1, 1)">
+        <path d="M25,70 Q10,90 0,100 Q20,80 30,75 Z" fill="#b38f24"/>
+        <path d="M25,70 Q45,35 65,45 Q55,80 25,70 Z" fill="#d4af37"/>
+        <path class="wing-anim" d="M45,40 Q55,-10 20,-20 Q40,15 45,40 Z" fill="#ebd17e"/>
+        <circle cx="65" cy="45" r="11" fill="#d4af37"/>
+        <path d="M75,43 L120,55 L75,47 Z" fill="#8c7317"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ==========================================================================
+       1. AÇILIŞ SENARYOSU (3D İNTERAKTİF KAPI)
+       ========================================================================== -->
+  <div id="doorWrapper" class="door-wrapper" role="button" aria-label="Davetiyeyi Aç" onclick="void(0)" ontouchstart="">
+    
+    <!-- 1. HOBBIT / MASALSI SARI AHŞAP YUVARLAK KAPI -->
+    <div class="hobbit-door-stage">
+      <!-- Ahşap Eşik -->
+      <div class="hobbit-door-sill"></div>
+
+      <!-- Dış Kasa Halka Çerçevesi -->
+      <div class="hobbit-wood-frame">
+        <!-- Kapı Açılınca Görünen İç Mekan & Hoş Geldiniz Mesajı -->
+        <div class="hobbit-interior-glow">
+          <div class="hobbit-interior-content">
+            <span class="hobbit-interior-tag">Hoş Geldiniz</span>
+            <h3 class="hobbit-interior-names">Azra & Şükrü</h3>
+          </div>
+        </div>
+
+        <!-- 3D Açılan Sarı Ahşap Kapı Kanadı -->
+        <div class="hobbit-door-leaf">
+          
+          <!-- Dikey Tahta Çizgileri -->
+          <div class="hobbit-planks">
+            <div class="hobbit-plank-line"></div>
+            <div class="hobbit-plank-line"></div>
+            <div class="hobbit-plank-line"></div>
+            <div class="hobbit-plank-line"></div>
+            <div class="hobbit-plank-line"></div>
+            <div class="hobbit-plank-line"></div>
+            <div class="hobbit-plank-line"></div>
+          </div>
+          
+
+          <!-- Sol Dövme Demir Menteşe -->
+          <div class="hobbit-hinge-wrapper">
+            <svg class="hobbit-hinge-svg" viewBox="0 0 130 110" fill="none">
+              <path
+                d="M 2,55 H 48 C 55,42 66,32 82,32 C 92,32 98,39 96,48 C 94,56 86,59 78,56 C 70,53 68,44 76,40 C 72,43 72,48 76,50 C 81,52 86,50 88,46 C 89,42 86,38 81,38 C 70,38 60,46 54,55 H 105 C 114,55 122,63 120,72 C 118,80 110,84 102,82 C 94,79 93,72 98,67 C 103,63 108,66 109,70 C 110,74 107,77 103,77 C 98,77 96,72 100,69 C 95,73 98,79 104,78 C 110,77 114,72 113,67 C 111,61 104,58 98,59 L 52,60 C 58,70 68,82 84,86 C 96,88 104,82 102,74 C 99,66 90,65 85,71 C 82,75 84,80 89,80 C 84,80 81,75 84,70 C 87,66 93,67 96,72 C 98,77 93,82 85,81 C 72,78 62,67 52,57 L 2,57 Z"
+                fill="#1e1e24"
+                stroke="#111116"
+                stroke-width="1.5"
+              />
+              <circle cx="12" cy="56" r="3.5" fill="#3a3a45" stroke="#0e0e12" stroke-width="1" />
+              <circle cx="28" cy="56" r="3.5" fill="#3a3a45" stroke="#0e0e12" stroke-width="1" />
+            </svg>
+          </div>
+
+          <!-- Yuvarlak 4 Bölmeli Işıklı Pencere -->
+          <div class="hobbit-window-box">
+            <div class="hobbit-window-glow"></div>
+            <div class="hobbit-window-muntin-h"></div>
+            <div class="hobbit-window-muntin-v"></div>
+            <div class="hobbit-window-shine"></div>
+          </div>
+
+          <!-- Sağ Kapı Kolu & Anahtar Deliği -->
+          <div class="hobbit-knob-box">
+            <div class="hobbit-knob-circle">
+              <div class="hobbit-knob-core"></div>
+            </div>
+            <div class="hobbit-keyhole">
+              <div class="hobbit-keyhole-top"></div>
+              <div class="hobbit-keyhole-bot"></div>
+            </div>
+          </div>
+
+          <!-- Orta Balmumu Mühür & Davet Butonu -->
+          <div class="hobbit-center-seal">
+            <div class="wax-seal">
+              <span class="wax-seal-monogram">A & Ş</span>
+            </div>
+            <div class="door-cta-badge">
+              <span class="pulse-dot"></span>
+              <span class="door-cta-text">Davetiyeyi Açmak İçin Tıklayın</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- ==========================================================================
+       2. ANA DAVETİYE İÇERİĞİ
+       ========================================================================== -->
+  <main class="invitation-container" id="invitationCard">
+    <article class="card-frame">
+      <!-- Altın Köşe İşlemeleri -->
+      <svg class="corner-decor top-left" viewBox="0 0 50 50">
+        <path d="M2,2 L35,2 C18,2 2,18 2,35 Z" fill="none" stroke="var(--primary)" stroke-width="1.5"/>
+        <circle cx="8" cy="8" r="3" fill="var(--primary)"/>
+      </svg>
+      <svg class="corner-decor top-right" viewBox="0 0 50 50">
+        <path d="M2,2 L35,2 C18,2 2,18 2,35 Z" fill="none" stroke="var(--primary)" stroke-width="1.5"/>
+        <circle cx="8" cy="8" r="3" fill="var(--primary)"/>
+      </svg>
+      <svg class="corner-decor bottom-left" viewBox="0 0 50 50">
+        <path d="M2,2 L35,2 C18,2 2,18 2,35 Z" fill="none" stroke="var(--primary)" stroke-width="1.5"/>
+        <circle cx="8" cy="8" r="3" fill="var(--primary)"/>
+      </svg>
+      <svg class="corner-decor bottom-right" viewBox="0 0 50 50">
+        <path d="M2,2 L35,2 C18,2 2,18 2,35 Z" fill="none" stroke="var(--primary)" stroke-width="1.5"/>
+        <circle cx="8" cy="8" r="3" fill="var(--primary)"/>
+      </svg>
+
+      <!-- Üst Başlık -->
+      <span class="tagline">Söz ve Nişan Törenimize Davetlisiniz.</span>
+
+      <!-- Gelin & Damat İsimleri -->
+      <header class="names-section">
+        <h1 class="couple-name">Azra</h1>
+        <span class="ampersand">&</span>
+        <h2 class="couple-name">Şükrü</h2>
+      </header>
+
+      <!-- Fotoğraf Alanı -->
+      <figure class="photo-wrapper">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Azra ve Şükrü" class="photo-img" loading="lazy">
+      </figure>
+
+      <!-- Romantik Not / Mesaj -->
+      <blockquote class="invitation-quote">
+        Hayatımızın en özel gününe adım atarken, bu mutlu anımızı sizlerle paylaşmaktan onur duyariz.
+      </blockquote>
+
+      <div class="gold-divider"></div>
+
+      <!-- Tarih ve Saat -->
+      <section class="event-info-box">
+        <div class="event-date-title">10 Ekim 2026 Cumartesi</div>
+        <div class="event-time-badge">Saat: 19:00 - 22:00</div>
+      </section>
+
+      <!-- Canlı Geri Sayım -->
+      <section class="countdown-section" id="countdownContainer">
+        <div class="countdown-grid">
+          <div class="countdown-item"><span class="countdown-val" id="cdDays">00</span><span class="countdown-lbl">Gün</span></div>
+          <div class="countdown-item"><span class="countdown-val" id="cdHours">00</span><span class="countdown-lbl">Saat</span></div>
+          <div class="countdown-item"><span class="countdown-val" id="cdMins">00</span><span class="countdown-lbl">Dakika</span></div>
+          <div class="countdown-item"><span class="countdown-val" id="cdSecs">00</span><span class="countdown-lbl">Saniye</span></div>
+        </div>
+      </section>
+
+      <!-- Mekan Adresi -->
+      <section class="venue-info">
+        <h3 class="venue-name">Eliz Wedding</h3>
+        <p class="venue-address">https://maps.app.goo.gl/ovmUBnKSigbtQ7qi7?g_st=ac</p>
+      </section>
+
+      <!-- ==========================================================================
+           3. EVRENSEL AKSİYON BUTONLARI (2 İŞLEVSEL BUTON)
+           ========================================================================== -->
+      <footer class="actions-section">
+        <!-- BUTON 1: Takvime Ekle (Çapraz Platform) -->
+        <button id="btnAddToCalendar" class="btn-action btn-calendar" type="button">
+          <svg class="btn-icon" viewBox="0 0 24 24">
+            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/>
+          </svg>
+          <span>Takvime Ekle</span>
+        </button>
+
+        <!-- BUTON 2: Yol Tarifi / Navigasyon (Google Maps) -->
+        <a id="btnNavigation" href="https://www.google.com/maps/search/?api=1&query=Eliz%20Wedding%20https%3A%2F%2Fmaps.app.goo.gl%2FovmUBnKSigbtQ7qi7%3Fg_st%3Dac" target="_blank" rel="noopener noreferrer" class="btn-action btn-navigation">
+          <svg class="btn-icon" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+          </svg>
+          <span>Yol Tarifi / Navigasyon</span>
+        </a>
+      </footer>
+    </article>
+
+    <!-- Kapıyı Yeniden Kapat / Test Et Butonu -->
+    <div class="replay-bar">
+      <button id="btnReplayDoor" class="btn-replay" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+          <path d="M3 3v5h5"/>
+        </svg>
+        <span>Kapıyı Tekrar Kapat</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- Arka Plan Müzik Çalar & Ses Dosyası -->
+  <audio id="bgAudioPlayer" src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3" preload="auto" loop></audio>
+
+  <!-- Yüzen Müzik Çalar Butonu -->
+  <div id="musicPlayerWidget" class="floating-music-widget" style="display: none;">
+    <div class="music-disc-icon">
+      <div id="musicWaveAnim" class="music-wave">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="music-info-text">
+      <span class="music-label-title">Pachelbel - Canon in D</span>
+      <span class="music-label-sub">Düğün Müziği</span>
+    </div>
+    <button id="musicPlayToggle" class="music-ctrl-btn" aria-label="Müziği Duraklat / Başlat">
+      <span id="musicPlayIcon">&#10074;&#10074;</span>
+    </button>
+  </div>
+
+  <!-- ==========================================================================
+       4. JAVASCRIPT MANTIĞI & DEĞİŞKENLER
+       ========================================================================== -->
+  <script>
+    /**
+     * KOLAY DÜZENLENEBİLİR DAVETİYE BİLGİLERİ (CONFIG)
+     */
+    const INVITATION_CONFIG = {
+      brideName: "Azra",
+      groomName: "Şükrü",
+      date: "2026-10-10",         // Format: YYYY-MM-DD
+      time: "19:00",         // Format: HH:MM
+      endTime: "22:00",   // Format: HH:MM
+      venueName: "Eliz Wedding",
+      venueAddress: "https://maps.app.goo.gl/ovmUBnKSigbtQ7qi7?g_st=ac",
+      googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Eliz%20Wedding%20https%3A%2F%2Fmaps.app.goo.gl%2FovmUBnKSigbtQ7qi7%3Fg_st%3Dac",
+      photoUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+      message: "Hayatımızın en özel gününe adım atarken, bu mutlu anımızı sizlerle paylaşmaktan onur duyariz.",
+      enableDoorSound: true,
+      enableMusic: true,
+      musicUrl: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3",
+      musicTitle: "Pachelbel - Canon in D",
+      musicVolume: 0.7
+    };
+
+    /* --- 1. Kapı Açılış Animasyonu & Yönetimi --- */
+    const doorWrapper = document.getElementById('doorWrapper');
+    const invitationCard = document.getElementById('invitationCard');
+    const btnReplayDoor = document.getElementById('btnReplayDoor');
+
+    function openInvitationDoor(e) {
+      if (e && e.preventDefault && e.type === 'touchstart') {
+        // Prevent double firing if touchstart is used
+        e.preventDefault();
+      }
+      if (doorWrapper.classList.contains('opened')) return;
+      
+      // Kapı açılma animasyonu sınıfı
+      doorWrapper.classList.add('door-opening');
+      
+      // Gerçekçi ahşap kapı gıcırtısı ve masalsı kristal arp tınısı
+      playDoorOpenAudio();
+
+      // iOS Safari requires audio to be played directly inside the user gesture handler.
+      // We start it immediately so it's not blocked by a setTimeout.
+      startBackgroundMusic();
+
+      const birdsWrapper = document.getElementById('birdsWrapper');
+      if (birdsWrapper) {
+        birdsWrapper.classList.add('fly-in');
+      }
+
+      setTimeout(() => {
+        doorWrapper.classList.add('opened');
+        invitationCard.classList.add('visible');
+      }, 950);
+    }
+
+    function closeInvitationDoor(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      invitationCard.classList.remove('visible');
+      doorWrapper.classList.remove('opened');
+      
+      const birdsWrapper = document.getElementById('birdsWrapper');
+      if (birdsWrapper) {
+        birdsWrapper.classList.remove('fly-in');
+      }
+
+      if (bgAudio) {
+        bgAudio.pause();
+        if (musicPlayIcon) musicPlayIcon.innerHTML = '&#9658;';
+        if (musicWaveAnim) musicWaveAnim.classList.remove('playing');
+      }
+      setTimeout(() => {
+        doorWrapper.classList.remove('door-opening');
+      }, 50);
+    }
+
+    if (doorWrapper) {
+      doorWrapper.addEventListener('click', openInvitationDoor);
+      doorWrapper.addEventListener('touchstart', openInvitationDoor, { passive: false });
+    }
+
+    if (btnReplayDoor) {
+      btnReplayDoor.addEventListener('click', closeInvitationDoor);
+      btnReplayDoor.addEventListener('touchstart', closeInvitationDoor, { passive: false });
+    }
+
+    /* --- 2. Çapraz Platform Takvime Ekleme (iOS .ics / Google Calendar) --- */
+    const btnAddToCalendar = document.getElementById('btnAddToCalendar');
+    if (btnAddToCalendar) {
+      btnAddToCalendar.addEventListener('click', () => {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+        const startDateTime = new Date(INVITATION_CONFIG.date + 'T' + INVITATION_CONFIG.time + ':00');
+        const endDateTime = new Date(INVITATION_CONFIG.date + 'T' + INVITATION_CONFIG.endTime + ':00');
+
+        function formatICSDate(date) {
+          return date.toISOString().replace(/-|:|.d+/g, '');
+        }
+
+        const title = INVITATION_CONFIG.brideName + ' & ' + INVITATION_CONFIG.groomName + ' - Düğün Töreni';
+        const description = INVITATION_CONFIG.brideName + ' ve ' + INVITATION_CONFIG.groomName + ' evleniyor! Sizleri bu mutlu günümüzde aramızda görmekten onur duyarız.';
+        const location = INVITATION_CONFIG.venueName + ', ' + INVITATION_CONFIG.venueAddress;
+
+        if (isIOS) {
+          // iOS ve macOS için doğrudan iCalendar (.ics) indirme
+          const icsContent = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//Dugun Davetiyesi//TR',
+            'CALSCALE:GREGORIAN',
+            'BEGIN:VEVENT',
+            'SUMMARY:' + title,
+            'DESCRIPTION:' + description,
+            'LOCATION:' + location,
+            'DTSTART:' + formatICSDate(startDateTime),
+            'DTEND:' + formatICSDate(endDateTime),
+            'STATUS:CONFIRMED',
+            'END:VEVENT',
+            'END:VCALENDAR'
+          ].join('\r\n');
+
+          const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.setAttribute('download', 'dugun-davetiyesi.ics');
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          // Android & Masaüstü için Google Calendar URL
+          function formatGCalDate(date) {
+            return date.toISOString().replace(/-|:|.ddd/g, '');
+          }
+
+          const gcalUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+            '&text=' + encodeURIComponent(title) +
+            '&dates=' + formatGCalDate(startDateTime) + '/' + formatGCalDate(endDateTime) +
+            '&details=' + encodeURIComponent(description) +
+            '&location=' + encodeURIComponent(location);
+
+          window.open(gcalUrl, '_blank');
+        }
+      });
+    }
+
+    /* --- 3. Canlı Geri Sayım Sayacı --- */
+    function initCountdown() {
+      const targetTime = new Date(INVITATION_CONFIG.date + 'T' + INVITATION_CONFIG.time + ':00').getTime();
+
+      const elDays = document.getElementById('cdDays');
+      const elHours = document.getElementById('cdHours');
+      const elMins = document.getElementById('cdMins');
+      const elSecs = document.getElementById('cdSecs');
+
+      function update() {
+        const now = new Date().getTime();
+        const diff = targetTime - now;
+
+        if (diff <= 0) {
+          if (elDays) elDays.textContent = '00';
+          if (elHours) elHours.textContent = '00';
+          if (elMins) elMins.textContent = '00';
+          if (elSecs) elSecs.textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (elDays) elDays.textContent = String(days).padStart(2, '0');
+        if (elHours) elHours.textContent = String(hours).padStart(2, '0');
+        if (elMins) elMins.textContent = String(mins).padStart(2, '0');
+        if (elSecs) elSecs.textContent = String(secs).padStart(2, '0');
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+    initCountdown();
+
+    /* --- 4. Web Audio API Kapı Açılış Sesi (Ahşap Gıcırtısı & Masalsı Arp) --- */
+    function playDoorOpenAudio() {
+      if (!INVITATION_CONFIG.enableDoorSound) return;
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        if (ctx.state === 'suspended') ctx.resume();
+
+        const now = ctx.currentTime;
+
+        // 1. Gerçekçi Ahşap Kapı Gıcırtısı (Filtered Brownian Noise)
+        const bufferSize = Math.floor(ctx.sampleRate * 0.9);
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        let lastOut = 0.0;
+        for (let i = 0; i < bufferSize; i++) {
+          const white = Math.random() * 2 - 1;
+          data[i] = (lastOut + 0.02 * white) / 1.02;
+          lastOut = data[i];
+          data[i] *= 3.5;
+        }
+        const noise = ctx.createBufferSource();
+        noise.buffer = buffer;
+
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(320, now);
+        filter.frequency.exponentialRampToValueAtTime(750, now + 0.5);
+        filter.frequency.exponentialRampToValueAtTime(280, now + 0.9);
+        filter.Q.value = 4.0;
+
+        const creakGain = ctx.createGain();
+        creakGain.gain.setValueAtTime(0.001, now);
+        creakGain.gain.linearRampToValueAtTime(0.18, now + 0.15);
+        creakGain.gain.exponentialRampToValueAtTime(0.001, now + 0.85);
+
+        noise.connect(filter);
+        filter.connect(creakGain);
+        creakGain.connect(ctx.destination);
+        noise.start(now);
+
+        // 2. Masalsı Kristal Arp Tınısı
+        const chimeTimes = [0.15, 0.35, 0.55, 0.75, 0.95];
+        const chimeFreqs = [523.25, 659.25, 783.99, 1046.5, 1318.51];
+        chimeTimes.forEach((t, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(chimeFreqs[i], now + t);
+
+          gain.gain.setValueAtTime(0.001, now + t);
+          gain.gain.linearRampToValueAtTime(0.12, now + t + 0.03);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + t + 1.2);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + t);
+          osc.stop(now + t + 1.3);
+        });
+      } catch (e) {
+        // Ses sentezi başarısız olursa sessizce devam et
+      }
+    }
+
+    /* --- 5. Arka Plan Müziği Oynatıcı --- */
+    const bgAudio = document.getElementById('bgAudioPlayer');
+    const musicWidget = document.getElementById('musicPlayerWidget');
+    const musicPlayBtn = document.getElementById('musicPlayToggle');
+    const musicPlayIcon = document.getElementById('musicPlayIcon');
+    const musicWaveAnim = document.getElementById('musicWaveAnim');
+
+    function startBackgroundMusic() {
+      if (!INVITATION_CONFIG.enableMusic || !bgAudio) return;
+      if (musicWidget) musicWidget.style.display = 'flex';
+      
+      bgAudio.volume = INVITATION_CONFIG.musicVolume || 0.65;
+      bgAudio.play().then(() => {
+        if (musicPlayIcon) musicPlayIcon.innerHTML = '&#10074;&#10074;';
+        if (musicWaveAnim) musicWaveAnim.classList.add('playing');
+      }).catch(() => {
+        // Tarayıcı otomatik çalmayı engellediyse kullanıcı butona basarak açabilir
+      });
+    }
+
+    function toggleMusic(e) {
+      if (e && e.preventDefault && e.type === 'touchstart') e.preventDefault();
+      if (bgAudio.paused) {
+        bgAudio.play();
+        if (musicPlayIcon) musicPlayIcon.innerHTML = '&#10074;&#10074;';
+        if (musicWaveAnim) musicWaveAnim.classList.add('playing');
+      } else {
+        bgAudio.pause();
+        if (musicPlayIcon) musicPlayIcon.innerHTML = '&#9658;';
+        if (musicWaveAnim) musicWaveAnim.classList.remove('playing');
+      }
+    }
+
+    if (musicPlayBtn && bgAudio) {
+      musicPlayBtn.addEventListener('click', toggleMusic);
+      musicPlayBtn.addEventListener('touchstart', toggleMusic, { passive: false });
+    }
+
+    /* --- 6. Arka Plan Altın Parçacık Animasyonu --- */
+    (function initParticles() {
+      const canvas = document.getElementById('particleCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const count = 35;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 2 + 0.6,
+          speedY: Math.random() * 0.5 + 0.2,
+          speedX: (Math.random() - 0.5) * 0.3,
+          opacity: Math.random() * 0.5 + 0.2,
+        });
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach((p) => {
+          p.y += p.speedY;
+          p.x += p.speedX;
+
+          if (p.y > height) {
+            p.y = -5;
+            p.x = Math.random() * width;
+          }
+          if (p.x > width) p.x = 0;
+          if (p.x < 0) p.x = width;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(212, 175, 55, ' + p.opacity + ')';
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = '#f3e5ab';
+          ctx.fill();
+        });
+
+        requestAnimationFrame(render);
+      }
+
+      render();
+    })();
+  </script>
+</body>
+</html>
